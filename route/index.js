@@ -2,6 +2,7 @@ const fetch = require('node-fetch');
 const Router = require('koa-router');
 const router = new Router();
 const stg = require('../tools/const').STAGING;
+const recursive = require('../tools/utils').recursive;
 
 const getHTML = (ctx) => {
     return new Promise((resolve, reject) => {
@@ -18,6 +19,7 @@ const getHTML = (ctx) => {
 const transform = async (ctx) => {
     const _REG = new RegExp('https:\/\/s0.*?\/(js|css)\/(.*?)@.*?\.(js|css)', 'g');
     const format = (str) => `^^${str}^^`;
+    const OUTPUT = recursive('./output');
     const mapper = (source) => {
         let NAME,
             placeholder = [];

@@ -4,10 +4,7 @@ const logger = require('./middleware/logger');
 const proxy = require('./middleware/proxy').proxy;
 const route = require('./route');
 
-const recursive = require('./tools/utils').recursive;
-
 global.ROOT = __dirname;
-global.OUTPUT = recursive('./output');
 
 const app = new Koa();
 
